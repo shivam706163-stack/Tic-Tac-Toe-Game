@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #075d68;
+    font-family: Arial, sans-serif;
+}
+
+.container h1{
+    font-size: 32px;
+    font-weight: 800;
+    color: #00e5ff;
+    text-align: center;
+    margin-bottom: 25px;
+    
+}
+
+.container .boxes{
+    display: flex;
+    height: 270px;
+    width: 270px;
+    flex-wrap: wrap;
+    padding: 8px;
+    gap: 8px;
+    background-color: #1c2833;
+    border: 1px solid #00e5ff;
+    border-radius: 15px;
+    box-shadow: 0 0 25px #00e5ff22;
+}
+
+.box{
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 45px;
+    height: 76px;
+    width: 76px;
+    background-color: #263746;
+    border: 1px solid #3b5365;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.box:hover{
+    background-color: #075d68;
+    border-color: #00e5ff;
+    /* box-shadow: 0 0 12px #00e5ff55; */
+    transform: scale(1.04);
+}
+
+
+.reset {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.reset button {
+    padding: 12px 30px;
+    background-color: #0acee8;
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.reset button:hover {
+    background-color: #075d68;
+    box-shadow: 0 0 15px #22c55e;
+    transform: scale(1.05);
+}
+
+
+
+</style>
+<body>
+    <div class="container">
+        <h1>Tic Tac Toe Game</h1>
+        <div class="boxes">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+
+        <div class="reset">
+            <button>New Game </button>
+        </div>
+    </div>
+
+    <script>
+
+
+
+const boxClick = document.querySelectorAll('.box');
+const reset = document.querySelector('.reset')
+
+
+let turn = "0";
+
+let win = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [2,4,6]
+];
+boxClick.forEach(function(box) {
+
+    box.addEventListener('click', function() {
+      if(box.innerHTML === ""){
+        box.innerHTML = turn;
+
+        for(let i=0; i < win.length; i++){
+            let a = boxClick[win[i][0]].innerHTML;
+            let b = boxClick[win[i][1]].innerHTML;
+            let c = boxClick[win[i][2]].innerHTML;
+
+            if(a === "X" && b === "X" && c === "X"){
+                alert("X won")
+                return;
+            }else if (a === "0" && b === "0" && c === "0"){
+                alert("0 won")
+                return;
+            }
+        }
+      }
+
+      reset.addEventListener('click',function(){
+        box.innerHTML = ""
+      })
+
+        if (turn === "0") {
+         turn = "X"
+    
+        } 
+    
+        else {
+            turn = "0"
+        }
+
+    });
+
+});
+
+
+// const boxClick = document.querySelectorAll('.box');
+// let turn = "0";
+
+// let win = [
+//     [0, 1, 2],
+//     [3, 4, 5],
+//     [6, 7, 8],
+//     [0, 3, 6],
+//     [1, 4, 7],
+//     [2, 5, 8],
+//     [0, 4, 8],
+//     [2, 4, 6]
+// ];
+
+// boxClick.forEach(function(box) {
+
+//     box.addEventListener('click', function() {
+
+//         if (box.innerHTML === "") {
+//             box.innerHTML = turn;
+
+//             for (let i = 0; i < win.length; i++) {
+
+//                 let a = boxClick[win[i][0]].innerHTML;
+//                 let b = boxClick[win[i][1]].innerHTML;
+//                 let c = boxClick[win[i][2]].innerHTML;
+
+//                 if (a === "X" && b === "X" && c === "X") {
+//                     alert("X won!");
+                
+//                     return;
+//                 }
+
+//                 else if(a === "0" && b === "0" && c === "0") {
+
+//                     alert("0 won!");
+//                     return;
+//                 }
+
+//             }
+
+//             if (turn === "0") {
+//                 turn = "X";
+//             }
+//             else {
+//                 turn = "0";
+//             }
+//         }
+
+//     });
+
+// });
+
+
+
+
+        
+    </script>
+</body>
+</html>
